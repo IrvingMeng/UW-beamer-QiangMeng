@@ -1,0 +1,148 @@
+% A beamer temple for UW, Copyright @QiangMeng(qiangm@uw.edu)
+% Adjusted from Gelugor, LIM Lian Tze, 2011
+
+\ProvidesPackage{beamerthemeUWQiang}[2015/11/08]
+
+\definecolor{QMGolden}{RGB}{232,211,162}
+\definecolor{QMPurple}{RGB}{51,0,111}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Outer theme
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\useoutertheme[width=.11\paperwidth]{sidebar}
+\setlength{\beamer@headheight}{.185\paperheight}
+\pgfdeclareimage[width=.1\paperwidth]{small-logo}{W-Logo}
+\pgfdeclareimage[width=.55\paperwidth]{type-logo}{UWlogo}
+\pgfdeclareimage[width=.33\paperwidth]{white-logo}{SW-Logo-White}
+\pgfdeclareimage[width=.33\paperwidth]{large-corner}{large-corner}
+\pgfdeclareimage[height=\beamer@headheight]{small-corner}{small-corner}
+\setbeamertemplate{sidebar left}{%
+\vskip7pt
+\insertverticalnavigation{\beamer@sidebarwidth}%
+}
+
+\setbeamertemplate{footline}[text line]{%
+\insertshortauthor\strut\hfill\insertshorttitle\hfill\insertshortdate\hspace{1em}\insertframenumber/\inserttotalframenumber}
+
+\addtobeamertemplate{frametitle}{}{%
+\begin{pgfpicture}
+\pgf@relevantforpicturesizefalse
+\pgftransformxshift{-\Gm@lmargin}
+\pgftransformyshift{\beamer@headheight+18pt}
+\pgftext[at=\pgfpoint{\paperwidth}{-\beamer@headheight},right,base]{\pgfuseimage{small-corner}}
+\pgfpathmoveto{\pgfpoint{.11\paperwidth}{0pt}}
+\pgfpathlineto{\pgfpoint{.11\paperwidth}{-\beamer@headheight}}
+\pgfsetlinewidth{3.5pt}
+\pgfsetinnerlinewidth{1pt}
+\pgfsetinnerstrokecolor{QMGolden}
+\pgfsetcolor{white}
+\pgfusepath{stroke}
+%\pgfpathmoveto{\pgfpoint{.11\paperwidth}{-.23\paperheight}}
+%\pgfpathlineto{\pgfpoint{.11\paperwidth}{-.97\paperheight}}
+%\pgfsetlinewidth{1pt}
+%\pgfsetinnerlinewidth{0pt}
+\pgfsetcolor{QMGolden}
+\pgfusepath{stroke}
+\pgftext[at=\pgfpoint{.053\paperwidth}{-.15\paperheight},center,base]{\pgfuseimage{small-logo}}
+\end{pgfpicture}%
+\vskip-25pt%
+}
+
+\addtobeamertemplate{title page}{%
+\usebeamertemplate{title background}%
+\vskip .2\paperheight%
+}
+{}
+
+\newcommand\DoPurpleBackground{%
+\pgfpathmoveto{\pgfpointorigin}
+\pgfpathrectanglecorners{\pgfpoint{0pt}{0pt}}{\pgfpoint{\paperwidth}{-\paperheight}}
+\pgfsetfillcolor{QMPurple}
+\pgfusepath{fill}
+\pgftext[at=\pgfpoint{\paperwidth}{-\paperheight},right,base]{\pgfuseimage{large-corner}}
+}
+
+\setbeamertemplate{title background}{%
+\begin{pgfpicture}
+\pgf@relevantforpicturesizefalse
+\pgftransformxshift{-\Gm@lmargin}
+\pgftransformyshift{5.5pt}
+\DoPurpleBackground
+
+% White bar across top
+\pgfpathmoveto{\pgfpointorigin}
+\pgfpathrectanglecorners{\pgfpoint{0pt}{0pt}}{\pgfpoint{\paperwidth}{-.25\paperheight}}
+\pgfsetfillcolor{white}
+\pgfusepath{fill}
+
+% Logo
+\pgftext[at=\pgfpoint{.029\paperwidth}{-.16\paperheight},left,base]{\pgfuseimage{type-logo}}
+
+% Purple short bar on left
+\pgfpathrectanglecorners{\pgfpoint{0pt}{-.18\paperheight}}{\pgfpoint{.15\paperwidth}{-.24\paperheight}}
+\pgfsetfillcolor{QMPurple}
+\pgfusepath{fill}
+
+% Followed by  bar on right
+\pgfpathrectanglecorners{\pgfpoint{.15\paperwidth}{-.18\paperheight}}{\pgfpoint{\paperwidth}{-.24\paperheight}}
+\pgfsetfillcolor{QMGolden}
+\pgfusepath{fill}
+
+% A stroke down the middle
+\pgfpathmoveto{\pgfpoint{.15\paperwidth}{-.18\paperheight}}
+\pgfpathlineto{\pgfpoint{.15\paperwidth}{-.24\paperheight}}
+\pgfsetlinewidth{3.5pt}
+\pgfsetinnerlinewidth{1pt}
+\pgfsetinnerstrokecolor{QMGolden}
+\pgfsetrectcap
+\pgfsetcolor{white}
+\pgfusepath{stroke}
+
+\pgfpathmoveto{\pgfpoint{.11\paperwidth}{-.9\paperheight}}
+\pgfpathlineto{\pgfpoint{.11\paperwidth}{-.93\paperheight}}
+\pgfsetlinewidth{1pt}
+\pgfsetcolor{white}
+\pgfusepath{stroke}
+
+\pgftext[at=\pgfpoint{.16\paperwidth}{-.92\paperheight},left,base]{\tiny Industrial \& System Engineering}
+\end{pgfpicture}%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Inner Theme
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\useinnertheme{rectangles}
+\setbeamertemplate{navigation symbols}{}
+
+\setlength{\leftmargini}{.5em}
+\setlength{\leftmarginii}{1.0em}
+\setlength{\leftmarginiii}{1.5em}
+\setlength{\leftmarginiv}{2.0em}
+\setlength{\leftmarginv}{2.5em}
+\setlength{\leftmarginvi}{3.0em}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Colours
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usecolortheme[named=QMGolden]{structure}
+\usecolortheme{rose}
+\setbeamercolor{title page}{fg=white}
+\setbeamercolor{logo}{bg=QMGolden}
+\setbeamercolor{frametitle}{fg=QMGolden,bg=QMPurple}
+\setbeamercolor{section in sidebar}{fg=QMGolden}
+\setbeamerfont{section in sidebar}{series=\bfseries}
+\setbeamercolor{block title}{bg=QMPurple!28!white,fg=QMPurple}
+\setbeamercolor{block body}{bg=QMGolden!15!white}
+
+\newcommand\ThankYouFrame{
+\begin{frame}[plain,t]
+\begin{pgfpicture}
+\pgf@relevantforpicturesizefalse
+\pgftransformxshift{-\Gm@lmargin}
+\pgftransformyshift{5.5pt}
+\DoPurpleBackground
+\pgftext[at=\pgfpoint{.5\paperwidth}{-.5\paperheight},center,center]{\pgfuseimage{white-logo}}
+\pgftext[at=\pgfpoint{.5\paperwidth}{-.3\paperheight},center,center]{\huge\structure{Thank You}}
+\end{pgfpicture}
+\end{frame}
+}
